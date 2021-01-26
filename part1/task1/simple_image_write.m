@@ -15,6 +15,9 @@ imOpen = fopen(imgName,'w');
 % Writes the intensity values to imOpen stored as 16-bit integer
 fwrite(imOpen,vol,'int16');
 
+% Prepares the binary file to concatenate the voxel dimensions   
+fseek(imOpen,0,'eof');
+
 % Writes the voxel dimensions to imOpen stored as 32-bit floating
 fwrite(imOpen,voxdims,'float32');
 
