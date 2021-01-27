@@ -5,12 +5,13 @@ function [imgVal, imgDims] = simple_image_read(imgBi, vol, voxdims)
 % dimenions, voxdim, of a binary file.
 % 
 % --- Inputs ---
-% imgName   - Name of the image you are writing to.
+% imgName   - Name of the image being read.
 % vol       - Intensity values of the volume
 % voxdim    - Voxel dimensions of the image
 %
 % --- Outputs ---
-% imgData   - 2D array containing intensity values and voxel dimensions.
+% imgVal    - Image intensity values 
+% imgDims   - Image dimensions
 
 % Opens binary file imgBi
 imOpen = fopen(imgBi);
@@ -19,8 +20,10 @@ imOpen = fopen(imgBi);
 volSize = numel(vol);
 vdSize = size(voxdims);
 
-% Reads the 16-bit integer intensity values of the binary file, imOpen.
+% Reads the 16-bit integer intensity values of the binary file, imOpen, and
+% reshapes imgVal to match vol
 imgVal = fread(imOpen, volSize, 'int16');
+imgVal = int16(reshape(imgVal, size(vol)));
 
 % Prepares imOpen to continue reading from current position  
 fseek(imOpen,0,'cof');
