@@ -1,4 +1,4 @@
-function imgData = simple_image_read(imgBi, vol, voxdims)
+function [imgVal, imgDims] = simple_image_read(imgBi, vol, voxdims)
 % Reads a 3D medical image to binary file.
 % 
 % simple_image_read reads  the intensity values, vol, and the voxel 
@@ -19,19 +19,14 @@ imOpen = fopen(imgBi);
 volSize = numel(vol);
 vdSize = size(voxdims);
 
-% Reads the intensity values of the binary file, imOpen, set to 16-bit 
-% integer values.
+% Reads the 16-bit integer intensity values of the binary file, imOpen.
 imgVal = fread(imOpen, volSize, 'int16');
 
-% Prepares the binary file to concatenate the voxel dimensions   
-fseek(imOpen,0,'eof');
+% Prepares imOpen to continue reading from current position  
+fseek(imOpen,0,'cof');
 
-% Reads the voxel dimensions of the binary file, imOpen, set to 32-bit
-% floating values
+% Reads the 32-bit floating  voxel dimensions of the binary file, imOpen.
 imgDims = fread(imOpen, vdSize, 'float32');
-
-% Stores the intensity values and dimensions in 2D array, imgData.
-imgData = [imgVal, imgDims];
 
 fclose(imOpen);
 end 
