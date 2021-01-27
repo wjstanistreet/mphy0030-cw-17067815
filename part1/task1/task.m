@@ -18,13 +18,16 @@ z25 = imgVal(:,:,25);
 % Plots and saves figures at different z-coordinates
 figure(1)
 image(voxdims(1),voxdims(2),z5)
+colormap('gray')
 saveas(figure(1),'Plot_at_z=5.jpg')
 
 figure(2)
 image(voxdims(1),voxdims(2),z15)
+colormap('gray')
 saveas(figure(2),'Plot_at_z=15.jpg')
 
 figure(3) 
 image(voxdims(1),voxdims(2),z25)
+colormap('gray')
 saveas(figure(3),'Plot_at_z=25.jpg')
 
