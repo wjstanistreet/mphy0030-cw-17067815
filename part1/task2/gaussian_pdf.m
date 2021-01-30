@@ -1,4 +1,4 @@
-function gauspdf = gaussian_pdf()
+function gauspdf = gaussian_pdf(x, meanVec, covMat)
 % Generates a 3D Gaussian probability density function 
 % 
 % gaussian_pdf generates a 3D Gaussian probability density function from a
