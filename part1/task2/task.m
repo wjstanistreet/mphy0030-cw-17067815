@@ -1,7 +1,12 @@
-% task 2 script
+% Task 2 script
 
-x = zeros(10000,3);
-x(:,1) = randn(10000,1);
-x(:,2) = mean(x(:,1))+std(x(:,1))*randn(10000,1);
-x(:,3) = mean(x(:,1))+std(x(:,1))*randn(10000,1);
+% Generates 10,000 random points normally distributed.
+x = randn(10000,3);
+
+% Mean and covariance matrix of vector x
+meanVec = mean(x);
+covMat = cov(x);
+
+% Creating a multivariate Gaussian probability distribution
+gausspdf = gaussian_pdf(x, meanVec, covMat);
 

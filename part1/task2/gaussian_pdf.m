@@ -1,4 +1,4 @@
-function gauspdf = gaussian_pdf(x, meanVec, covMat)
+function gausspdf = gaussian_pdf(x, meanVec, covMat)
 % Generates a 3D Gaussian probability density function 
 % 
 % gaussian_pdf generates a 3D Gaussian probability density function from a
@@ -6,14 +6,20 @@ function gauspdf = gaussian_pdf(x, meanVec, covMat)
 % covMat.
 % 
 % --- Inputs ---
-% x         - 3 dimensional vector x = [x1,x2,x3]
+% x         - Multivariate vector; x = [x1,x2,x3]
 % meanVec   - Mean vector of x
 % covMat    - Covariance matrix of x
 % 
 % --- Output ---
-% gauspdf     - 3D Gaussian probability density function
+% gausspdf     - 3D Gaussian probability density function
 
-gauspdf = (1/(((2*pi)^(3/2))*(sqr(det(covMat)))))*exp(-(1/2)*(x-meanVec)...
-        *inv(covMat)*(x-meanVec));
+% Preallocating for speed
+gausspdf = zeros(size(x))';
+
+% Iterate for each value of 
+for i = 1:length(x)
+gausspdf(:,i) = (1/((2*pi)^(3/2)).*(sqrt(det(covMat)))).*exp((-1/2)*(x(i,:)-meanVec)...
+        *(inv(covMat).*(x(i,:)-meanVec)))';
+end
 
 end
