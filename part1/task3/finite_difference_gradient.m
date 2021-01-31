@@ -1,12 +1,12 @@
-function fdg = finite_difference_gradient(a, x)
+function [fdg] = finite_difference_gradient(a, x)
 %  
 % finite_difference_gradient calculates the finite difference between
 % points in a multivariate function, mvf. 
 % 
 % --- Inputs ---
 % 
-% mvf       - Input multivariate function 
-% ivv       - Variable vector representing the position
+% a        - Input multivariate function 
+% x        - Variable vector representing the position
 % 
 % --- Output ---
 % 
@@ -27,7 +27,8 @@ Bacx = [x(1)-h, x(2), x(3)];
 Bacy = [x(1), x(2)-h, x(3)];
 Bacz = [x(1), x(2), x(3)-h];
 
-% We can approximate the partial difference in each dimension.
+% We can approximate the partial difference in each dimension forward 
+% and backwards.
 dfdx = (quadratic_polynomial(a,Forx));
 dfdy = (quadratic_polynomial(a,Fory));
 dfdz = (quadratic_polynomial(a,Forz));
@@ -36,11 +37,13 @@ dbdx = (quadratic_polynomial(a,Bacx));
 dbdy = (quadratic_polynomial(a,Bacy));
 dbdz = (quadratic_polynomial(a,Bacz));
 
-
+% These can then be combined to form a complete central difference
+% approximation as a vector.
 dx = (dfdx-dbdx)/(2*h);
 dy = (dfdy-dbdy)/(2*h);
 dz = (dfdz-dbdz)/(2*h);
 
+% Outputs a del gradient vector
 fdg = [dx, dy, dz];
 
 end 
