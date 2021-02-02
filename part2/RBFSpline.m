@@ -25,8 +25,7 @@ classdef RBFSpline
         end
         
         function queT = evaluate(queP, ctrlP, alpha, sigma)
-            % outputs the kernel values between the query and control
-            % point sets.
+            % outputs the transformed query point sets
             %
             % --- Inputs ---
             % queP   - Initial source points
@@ -40,7 +39,7 @@ classdef RBFSpline
             
         end  
         
-        function kernel_gaussian(queP, ctrlP, sigma)
+        function K = kernel_gaussian(queP, ctrlP, sigma)
             % outputs the kernel values between the query and control
             % point sets
             %
@@ -50,7 +49,7 @@ classdef RBFSpline
             % sigma  - Individual weights for localisation error
             %
             % --- Output ---
-            % alpha - Spline coefficients representing the fitted spline
+            % K      - Kernel values between query and control points
             
             
         end    
