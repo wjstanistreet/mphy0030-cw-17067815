@@ -14,12 +14,11 @@ function gausspdf = gaussian_pdf(x, meanVec, covMat)
 % gausspdf     - 3D Gaussian probability density function
 
 % Preallocating for speed
-gausspdf = zeros(size(x))';
+gausspdf = zeros(length(x),1);
 
 % Iterate for each value of 
 for i = 1:length(x)
-gausspdf(:,i) = (1/((2*pi)^(3/2)).*(sqrt(det(covMat)))).*exp((-1/2)*(x(i,:)-meanVec)...
-        *(inv(covMat).*(x(i,:)-meanVec)))';
+gausspdf(i) = (1/((2*pi)^(3/2))*(sqrt(det(covMat))))*exp((-1/2)*((x(:,i)-meanVec).'*(inv(covMat))*((x(:,i)-meanVec))));
 end
 
 end
