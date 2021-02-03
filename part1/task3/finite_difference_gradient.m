@@ -10,7 +10,7 @@ function [fdg] = finite_difference_gradient(a, x)
 % 
 % --- Output ---
 % 
-% fdg       - Finite difference gradient
+% fdg       - Finite difference gradient function
 
 % For this coursework, the input multivariate function is equal to
 %  𝑓(𝐱)=𝑎1𝑥1^2+𝑎2𝑥2^2+𝑎3𝑥3^2+𝑎4𝑥1𝑥2+𝑎5𝑥1𝑥3+𝑎6𝑥2𝑥3+𝑎7𝑥1+𝑎8𝑥2+𝑎9𝑥3+𝑎0
