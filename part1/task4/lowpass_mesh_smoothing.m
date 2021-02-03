@@ -43,17 +43,31 @@ for i = 1:iter
             end
         end
         
+        % Finds coordinates of neighbouring triangles 
+        q = vert(uniQ,:);
+        
         % Calculates weighting factor, omega.
         n = numel(uniQ);
         omega = 1 / n;
         
-        % Alternates between lambda and mu to find new position, p prime.
-        p_prime(P,:) = p_prime(P,:) + lambda*omega*(sum(vert(uniQ,:) - vert(P,:)));
-        p_prime(P,:) = p_prime(P,:) + mu*omega*(sum(vert(uniQ,:)- vert(P,:)));
         
+        for k = 1:n
+            % Alternates between each weighting factor to find new
+            % position, p prime.
+            % Lambda
+            sigma = q(k,:) - vert(P,:);
+            vert(P,:) = vert(P,:) + lambda*omega*sigma;
+            
+            %Mu
+            sigma = q(k,:) - vert(P,:);
+            p(P,:) = vert(P,:) + mu*omega*sigma;
+        end 
+        
+        % Sets the verticies to the new positions
+        p_prime = vert;
     end
     
-    
+
 end
 
 
