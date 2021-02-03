@@ -4,7 +4,7 @@ function simple_image_write(imgName,vol,voxdims)
 % simple_image_write writes a 3D image to a binary file, imgName,
 % containing the intensity values, vol, and the voxel dimenions, voxdim.
 % 
-% % --- Inputs ---
+% --- Inputs ---
 % imgName   - Name of the image you are writing to.
 % vol       - Intensity values of the volume
 % voxdim    - Voxel dimensions of the image
