@@ -24,9 +24,6 @@ currVal = iniVal;
 % Beginning iteration at 0
 i = 0;
 
-% Initialisng optiVal
-optiVal = zeros(((maxIter)+1),3);
-
 while i <= maxIter
     % Gradient descent function Θ1=Θ0-α∇J(Θ)
     nextVal = currVal - stpSize*grdFun;
@@ -43,10 +40,9 @@ while i <= maxIter
     i = i+1;
     currVal = nextVal;
 
-    % Outputs optimum location 
-    optiVal(i,:) = currVal;
 end
-   
 
+% Outputs optimum location
+optiVal = currVal;
 
 end 
