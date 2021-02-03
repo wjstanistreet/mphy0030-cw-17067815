@@ -26,9 +26,9 @@ fprintf('The optimum value is at: (%f, %f, %f)', R_optiVal);
 % differentiating the function twice. If the first partial differential is
 % 0, we know the position is stationary. If the second partial differential
 % is positive, the function is a minimum.
-optiFun = quadratic_polynomial(a, optiVal);
-optiGrad1 = finite_difference_gradient(a, optiVal);
-optiGrad2 = finite_difference_gradient(a, optiGrad1);
+% optiFun = quadratic_polynomial(a, optiVal);
+% optiGrad1 = finite_difference_gradient(a, optiVal);
+% optiGrad2 = finite_difference_gradient(a, optiGrad1);
 
 
 
